@@ -69,6 +69,7 @@ exports.validateJWTAuth = function(req, res, next){
  */ 
 exports.ensureAuthorized = function(req, res, next){ 
   if (!req.user){
+    debug('req.user is not defined!')
     return res.status(401).send(new UnauthorizedError())
   }
   next()
