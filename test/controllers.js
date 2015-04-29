@@ -1,6 +1,5 @@
 var should = require('chai').should()
   , httpMocks = require('node-mocks-http')
-  , async = require('async')
   , auth = require('../')
   , fixtures = require('./fixtures')
   , UnauthorizedError = require('../lib/errors/UnauthorizedError')
@@ -107,5 +106,3 @@ describe('ensureAuthorized', function(){
     auth.ensureAuthorized(req, res, done)
   })
 })
-
- 

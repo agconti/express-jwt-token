@@ -13,7 +13,6 @@
     "supertest": "^0.15.0"
   },
   "devDependencies": {
-    "async": "^0.9.0",
     "chai": "^2.2.0",
     "mocha": "^2.2.4",
     "node-mocks-http": "^1.4.1"
