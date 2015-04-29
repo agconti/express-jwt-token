@@ -4,7 +4,6 @@ var should = require('chai').should()
   , fixtures = require('./fixtures')
   , UnauthorizedError = require('../lib/errors/UnauthorizedError')
   , request = require('supertest')
-  , express = require('express')
   , next = function(){}
   , req 
   , res

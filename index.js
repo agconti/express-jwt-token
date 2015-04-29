@@ -1,7 +1,6 @@
 var jwt = require('jsonwebtoken')
   , jwtSecret = require('./lib/jwt').jwtSecret
   , jwtAuthHeaderPrefix = require('./lib/jwt').jwtAuthHeaderPrefix
-  , Joi = require('joi')
   , debug = require('debug')('jwtAuth:controllers:authentication')
   , UnauthorizedError = require('./lib/errors/UnauthorizedError')
 
