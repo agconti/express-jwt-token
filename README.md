@@ -1,4 +1,5 @@
 # JWT token auth for express.js
+[![NPM](https://nodei.co/npm/jwt-token-auth.png?compact=true)](https://npmjs.org/package/jwt-token-auth?compact=true)
 [![Build Status](https://travis-ci.org/agconti/express-jwt-auth.svg?branch=master)](https://travis-ci.org/agconti/express-jwt-auth)
 
 This package provides [JSON Web Token Authentication](http://tools.ietf.org/html/draft-ietf-oauth-json-web-token) support for
