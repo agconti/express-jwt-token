@@ -16,4 +16,64 @@ New to using JSON Web Tokens? Take a look at these resources:
 npm install jwt-token-auth
 ```
 
-This implemenation was based on the execellent [django-rest-framework-jwt library](https://github.com/GetBlimp/django-rest-framework-jwt).
+# Usage
+```js
+var express = require('express')
+  , auth = require('jwt-token-auth')
+  , app = express()
+
+
+// Require jwt authorization on all routes
+app.use(auth.jwtAuthProtected)
+
+// Reguire jwt auth on a specfic route
+app.get('/', auth.jwtAuthProtected, function(req, res){
+  res.send({'msg': 'Im jwt auth protected!'})
+})
+
+app.listen(3000)
+```
+Now your route(s) are protected and require an authorization header in the form of:
+
+```
+Authorization JWT < jwt token > 
+```
+
+# Configuration
+Configure your JWT Secret. This must be changed for production. Default value is `'secret'`. 
+```js
+process.env.JWT_SECRET_KEY = 'Your Secret'
+```
+
+Configure the authorization header prefix. this is optional. Default is `'JWT'`.
+```js
+process.env.jwtAuthHeaderPrefix
+```
+
+# Provided Middleware
+
+## ensureAuthorizationHeader
+An Express.js middleware that ensures that a request has supplied an authorization header.
+* @param {object} req
+* @param {object} res
+* @param {function} next
+
+## validateJWTAuth
+An Express.js middleware validates a JWT token.
+ * @param {object} req
+ * @param {object} res
+ * @param {function} next
+
+## ensureAuthorized 
+An Express.js middleware that ensures that a request has supplied an authorization header.
+* @param {object} req
+* @param {object} res
+* @param {function} next
+
+## jwtAuthProtected 
+The grouped middleware needed to enforce jwt Auth. Mounts the same as a single middleware.
+
+# Errors 
+When authorization fails jwt-token-auth will return an `UnauthorizedError` with some helpful details about what went wrong. 
+ 
+This implementation was based on the excellent [django-rest-framework-jwt library](https://github.com/GetBlimp/django-rest-framework-jwt).

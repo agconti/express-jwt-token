@@ -6,7 +6,7 @@ var jwt = require('jsonwebtoken')
 
 
 /**
- * An Express.js middleware that ensures that a has supplied an authorization header.
+ * An Express.js middleware that ensures that a request has supplied an authorization header.
  * @param {object} req
  * @param {object} res
  * @param {function} next
@@ -33,7 +33,7 @@ exports.ensureAuthorizationHeader = function(req, res, next){
 
 
 /**
- * An Express.js middleware validates a JWT token.
+ * An Express.js middleware that validates a JWT token.
  * @param {object} req
  * @param {object} res
  * @param {function} next
@@ -61,7 +61,7 @@ exports.validateJWTAuth = function(req, res, next){
 
 
 /**
- * An Express.js middleware that ensures that a has supplied an authorization header.
+ * An Express.js middleware that ensures that a request has supplied an authorization header.
  * @param {object} req
  * @param {object} res
  * @param {function} next
@@ -75,7 +75,7 @@ exports.ensureAuthorized = function(req, res, next){
 
 
 /**
- * The grouped middleware need to enforce jwt Auth
+ * The grouped middleware needed to enforce jwt Auth
  */ 
 exports.jwtAuthProtected  = [ exports.ensureAuthorizationHeader
                             , exports.validateJWTAuth
