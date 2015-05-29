@@ -1,6 +1,6 @@
 {
-  "name": "express-jwt-auth",
-  "version": "0.1.3",
+  "name": "express-jwt-token",
+  "version": "0.1.4",
   "description": "Json web token authentication for express.js ",
   "main": "index.js",
   "dependencies": {
