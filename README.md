@@ -1,6 +1,6 @@
 # JWT token auth for express.js
-[![Build Status](https://travis-ci.org/agconti/jwt-token-auth.svg?branch=master)](https://travis-ci.org/agconti/jwt-token-auth)
-[![npm version](https://badge.fury.io/js/jwt-token-auth.svg)](http://badge.fury.io/js/jwt-token-auth)
+[![Build Status](https://travis-ci.org/agconti/express-jwt-token.svg?branch=master)](https://travis-ci.org/agconti/express-jwt-token)
+[![npm version](https://badge.fury.io/js/express-jwt-token.svg)](http://badge.fury.io/js/express-jwt-token)
 
 This package provides [JSON Web Token Authentication](http://tools.ietf.org/html/draft-ietf-oauth-json-web-token) support for
 [Express](http://expressjs.com/).
@@ -13,13 +13,13 @@ New to using JSON Web Tokens? Take a look at these resources:
 
 # Installation 
 ```bash
-npm install jwt-token-auth
+npm install express-jwt-token
 ```
 
 # Usage
 ```js
 var express = require('express')
-  , auth = require('jwt-token-auth')
+  , auth = require('express-jwt-token')
   , app = express()
 
 
@@ -74,6 +74,6 @@ An Express.js middleware that ensures that a request has supplied an authorizati
 The grouped middleware needed to enforce jwt Auth. Mounts the same as a single middleware.
 
 # Errors 
-When authorization fails jwt-token-auth will return an `UnauthorizedError` with some helpful details about what went wrong. 
+When authorization fails `express-jwt-token` will return an `UnauthorizedError` with some helpful details about what went wrong. 
  
 This implementation was based on the excellent [django-rest-framework-jwt library](https://github.com/GetBlimp/django-rest-framework-jwt).

@@ -1,5 +1,5 @@
 {
-  "name": "jwt-token-auth",
+  "name": "express-jwt-auth",
   "version": "0.1.3",
   "description": "Json web token authentication for express.js ",
   "main": "index.js",
@@ -19,7 +19,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/agconti/jwt-token-auth.git"
+    "url": "git+https://github.com/agconti/express-jwt-token.git"
   },
   "keywords": [
     "jwt",
@@ -33,7 +33,7 @@
   "author": "Andrew Conti <agc11d@gmail.com> (http://agconti.com)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/agconti/jwt-token-auth/issues"
+    "url": "https://github.com/agconti/express-jwt-token/issues"
   },
-  "homepage": "https://github.com/agconti/jwt-token-auth#readme"
+  "homepage": "https://github.com/agconti/express-jwt-token#readme"
 }
