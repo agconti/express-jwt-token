@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Jwt-token-auth by agconti</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Jwt-token-auth</h1>
+      <h2 class="project-tagline">A lean and configurable implementation of jwt auth for Express.js</h2>
+      <a href="https://github.com/agconti/jwt-token-auth" class="btn">View on GitHub</a>
+      <a href="https://github.com/agconti/jwt-token-auth/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/agconti/jwt-token-auth/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="jwt-token-auth-for-expressjs" class="anchor" href="#jwt-token-auth-for-expressjs" aria-hidden="true"><span class="octicon octicon-link"></span></a>JWT token auth for express.js</h1>
+
+<p><a href="https://travis-ci.org/agconti/jwt-token-auth"><img src="https://travis-ci.org/agconti/jwt-token-auth.svg?branch=master" alt="Build Status"></a>
+<a href="http://badge.fury.io/js/jwt-token-auth"><img src="https://badge.fury.io/js/jwt-token-auth.svg" alt="npm version"></a></p>
+
+<p>This package provides <a href="http://tools.ietf.org/html/draft-ietf-oauth-json-web-token">JSON Web Token Authentication</a> support for
+<a href="http://expressjs.com/">Express</a>.</p>
+
+<p>New to using JSON Web Tokens? Take a look at these resources:</p>
+
+<ul>
+<li><a href="http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html">JSON Web Token Abstract</a></li>
+<li><a href="https://auth0.com/blog/2014/01/15/auth-with-socket-io/">Token based authentication with Socket.io</a></li>
+<li><a href="http://jwt.io/">JWT.io</a></li>
+</ul>
+
+<h1>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h1>
+
+<div class="highlight highlight-bash"><pre>npm install jwt-token-auth</pre></div>
+
+<h1>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h1>
+
+<div class="highlight highlight-js"><pre><span class="pl-k">var</span> express <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>express<span class="pl-pds">'</span></span>)
+  , auth <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>jwt-token-auth<span class="pl-pds">'</span></span>)
+  , app <span class="pl-k">=</span> express()
+
+
+<span class="pl-c">// Require jwt authorization on all routes</span>
+app.use(auth.jwtAuthProtected)
+
+<span class="pl-c">// Reguire jwt auth on a specfic route</span>
+app.get(<span class="pl-s"><span class="pl-pds">'</span>/<span class="pl-pds">'</span></span>, auth.jwtAuthProtected, <span class="pl-k">function</span>(<span class="pl-smi">req</span>, <span class="pl-smi">res</span>){
+  res.<span class="pl-c1">send</span>({<span class="pl-s"><span class="pl-pds">'</span>msg<span class="pl-pds">'</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>Im jwt auth protected!<span class="pl-pds">'</span></span>})
+})
+
+app.listen(<span class="pl-c1">3000</span>)</pre></div>
+
+<p>Now your route(s) are protected and require an authorization header in the form of:</p>
+
+<pre><code>Authorization JWT &lt; jwt token &gt; 
+</code></pre>
+
+<h1>
+<a id="configuration" class="anchor" href="#configuration" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configuration</h1>
+
+<p>Configure your JWT Secret. This must be changed for production. Default value is <code>'secret'</code>. </p>
+
+<div class="highlight highlight-js"><pre><span class="pl-c1">process</span>.env.JWT_SECRET_KEY <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>Your Secret<span class="pl-pds">'</span></span></pre></div>
+
+<p>Configure the authorization header prefix. this is optional. Default is <code>'JWT'</code>.</p>
+
+<div class="highlight highlight-js"><pre><span class="pl-c1">process</span>.env.jwtAuthHeaderPrefix</pre></div>
+
+<h1>
+<a id="provided-middleware" class="anchor" href="#provided-middleware" aria-hidden="true"><span class="octicon octicon-link"></span></a>Provided Middleware</h1>
+
+<h2>
+<a id="ensureauthorizationheader" class="anchor" href="#ensureauthorizationheader" aria-hidden="true"><span class="octicon octicon-link"></span></a>ensureAuthorizationHeader</h2>
+
+<p>An Express.js middleware that ensures that a request has supplied an authorization header.</p>
+
+<ul>
+<li>
+<a href="https://github.com/param" class="user-mention">@param</a> {object} req</li>
+<li>
+<a href="https://github.com/param" class="user-mention">@param</a> {object} res</li>
+<li>
+<a href="https://github.com/param" class="user-mention">@param</a> {function} next</li>
+</ul>
+
+<h2>
+<a id="validatejwtauth" class="anchor" href="#validatejwtauth" aria-hidden="true"><span class="octicon octicon-link"></span></a>validateJWTAuth</h2>
+
+<p>An Express.js middleware validates a JWT token.</p>
+
+<ul>
+<li>
+<a href="https://github.com/param" class="user-mention">@param</a> {object} req</li>
+<li>
+<a href="https://github.com/param" class="user-mention">@param</a> {object} res</li>
+<li>
+<a href="https://github.com/param" class="user-mention">@param</a> {function} next</li>
+</ul>
+
+<h2>
+<a id="ensureauthorized" class="anchor" href="#ensureauthorized" aria-hidden="true"><span class="octicon octicon-link"></span></a>ensureAuthorized</h2>
+
+<p>An Express.js middleware that ensures that a request has supplied an authorization header.</p>
+
+<ul>
+<li>
+<a href="https://github.com/param" class="user-mention">@param</a> {object} req</li>
+<li>
+<a href="https://github.com/param" class="user-mention">@param</a> {object} res</li>
+<li>
+<a href="https://github.com/param" class="user-mention">@param</a> {function} next</li>
+</ul>
+
+<h2>
+<a id="jwtauthprotected" class="anchor" href="#jwtauthprotected" aria-hidden="true"><span class="octicon octicon-link"></span></a>jwtAuthProtected</h2>
+
+<p>The grouped middleware needed to enforce jwt Auth. Mounts the same as a single middleware.</p>
+
+<h1>
+<a id="errors" class="anchor" href="#errors" aria-hidden="true"><span class="octicon octicon-link"></span></a>Errors</h1>
+
+<p>When authorization fails jwt-token-auth will return an <code>UnauthorizedError</code> with some helpful details about what went wrong. </p>
+
+<p>This implementation was based on the excellent <a href="https://github.com/GetBlimp/django-rest-framework-jwt">django-rest-framework-jwt library</a>.</p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/agconti/jwt-token-auth">Jwt-token-auth</a> is maintained by <a href="https://github.com/agconti">agconti</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
+
