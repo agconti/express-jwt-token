@@ -3,7 +3,7 @@
 [![npm version](https://badge.fury.io/js/express-jwt-token.svg)](http://badge.fury.io/js/express-jwt-token)
 
 This package provides [JSON Web Token Authentication](http://tools.ietf.org/html/draft-ietf-oauth-json-web-token) support for
-[Express](http://expressjs.com/). It will conveniently set `req.user` for authenticated requests. The authorization header is in the from of: 
+[Express](http://expressjs.com/). It conveniently sets `req.user` for authenticated requests. The authorization header is in the from of: 
 ```
 Authorization JWT < jwt token > 
 ```
