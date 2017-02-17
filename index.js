@@ -42,7 +42,7 @@ exports.validateJWTAuth = function(req, res, next){
   var auth = req.auth
 
   // exit early if auth is not JWT
-  if (auth[0].toLowerCase() !== jwtAuthHeaderPrefix){
+  if (!auth || auth[0].toLowerCase() !== jwtAuthHeaderPrefix){
     debug('Not JWT auth')
     return next()
   }
