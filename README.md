@@ -55,7 +55,7 @@ process.env.JWT_SECRET_KEY = 'Your Secret'
 
 Configure the authorization header prefix. this is optional. Default is `'JWT'`.
 ```js
-process.env.jwtAuthHeaderPrefix
+process.env.JWT_AUTH_HEADER_PREFIX
 ```
 
 # Provided Middleware
